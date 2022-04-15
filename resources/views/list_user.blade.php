@@ -1,141 +1,173 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        ul {
-            margin: 0;
-            height: 35%;
-        }
-        li {
-            padding: 10px;
-            list-style: none;
-        }
-        .wrapper {
-            min-width: 100%;
-            height: 100vh;
-            display: flex;
-            align-items: center;
-        }
-        .right,.left {
-            width: 40%;
-            height: 82%;
-            border: 5px solid black;
-            margin: 0px auto;
-        }
-        .title {
-            margin: 10px 0px;
-            font-size: 1.5rem;
-            text-align: center;
-        }
-        .title p {
-            font-size: 1rem;
-            font-weight: 400;
-        }
-        .main {
-            width: 90%;
-            height: 70%;
-            margin: auto;
-            border: 2px solid black;
-            padding: 10px;
-        }
-        .list-user {
-            margin-left: 0px;
-            border-bottom: 1px dashed black;
-        }
-        .list-user {
-            overflow-y: auto;
-        }
-        .text-insert textarea {
-            height: 35%;
-            width: 100%;
-            border: none;
-            padding: 5px;
-            outline: none;
-            font-size: 1.2rem;
-        }
-        .btn-handle {
-            margin: 10px auto;
-            width: 90%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .btn-handle button {
-            width: 49%;
-            height: 50px;
-        }
-        .btn-handle .btn-cancel {
-            background-color: red;
-            border: red;
-            color: #fff;
-            font-size: 1rem;
-            cursor: pointer;
-        }
-        .btn-handle .btn-add {
-            background-color: orange;
-            border: orange;
-            color: #fff;
-            font-size: 1rem;
-            cursor: pointer;
-        }
-    </style>
-</head>
-<body>
-<div class="container">
+@extends('layout')
+@section('content')
     <div class="wrapper">
         <div class="left">
-            <div class="border border-dark align-items-center">
-                <strong> 1. INPUTS : </strong> <button> {{ $users->count() }}</button>
-                <form action="{{ route('user.store') }}" method="POST" style="padding-bottom: 5px;">
-                    @csrf
-                    <label for="name">
-                        <input type="text" name="name" placeholder="Input here..." required>
-                    </label>
-                    <button type="submit"><span><strong>&#43;</strong></span></button>
-                </form>
-                <hr style=" border-top: 3px dashed; width: 50%; margin: auto; padding-bottom: 5px;" />
-                <div class="list-user">
-                    <ul class="list">
-                        @foreach($users as $user)
-                            <li>{{ $user->id }})&nbsp;{{ $user->name }}</li>
-                        @endforeach
+            <h3 class="title">3. RESULT</h3>
+            <div class="list-group">
+                <div class="group">
+                    <span>group 1</span>
+                    <ul class="item-group">
+                        <li>A</li>
+                        <li>B</li>
+                        <li>C</li>
+                        <li>D</li>
+                        <li>D</li>
+                        <li>D</li>
+                        <li>D</li>
+                        <li>D</li>
+                    </ul>
+                </div>
+                <div class="group">
+                    <span>group 1</span>
+                    <ul class="item-group">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+                <div class="group">
+                    <span>group 1</span>
+                    <ul class="item-group">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+                <div class="group">
+                    <span>group 1</span>
+                    <ul class="item-group">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
                     </ul>
                 </div>
             </div>
         </div>
+        <div class="middle">
+            <h3 class="title">2. CONTROLLER</h3>
+            <form action="" class="form-controller">
+                <div class="form-item item-1">
+                    <label for="choose-type">Balance gender distribution</label>
+                    <span class="choose_input"><i class="fa-solid fa-check"></i></span>
+                </div>
+                <div class="form-item item-2">
+                    <label for="choose-type">Balance gender distribution</label>
+                    <button type="button" class="choose-type"></button>
+                    <input id="single" type="number" class="choose_input d-none" value="2">
+                </div>
+                <span>OR (Set either one)</span>
+                <div class="form-item item-3">
+                    <label for="choose-type">Balance gender distribution</label>
+                    <button type="button" class="choose-type"></button>
+                    <input id="many" type="number" class="choose_input d-none" value="2">
+                </div>
+                <button type="submit" class="btn-sdm-controller">START</button>
+            </form>
+        </div>
         <div class="right">
-            <div class="title">
-                <h4>View/Add List</h4>
-                <p>(one input/line) (Existing inputs are none-editable)</p>
+            <div class="text-title">
+                <h3>NHAP DANH SACH</h3>
             </div>
             <div class="main">
-                <div class="list-user">
-                    <ul class="list">
-                        @foreach($users as $user)
-                            <li>{{ $user->name }} </li>
-                        @endforeach
-                    </ul>
+                <div class="wrapper-right">
+                    <div class="header-main d-flex">
+                        <div class="header-left d-flex align-items-center">
+                            <h3 class="title">1. INPUT</h3><span class="total">87</span>
+                        </div>
+                        <div class="header-right">
+                            <ul class="d-flex">
+                                <li><a href=""><i class="fa-regular fa-folder"></i></a></li>
+                                <li><a href=""><i class="fa-solid fa-list"></i></i></a></li>
+                                <li><a href="" class="more"><i class="fa-solid fa-ellipsis"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <form class="form-add" action="">
+                        <input type="text">
+                        <button>+</button>
+                    </form>
+                    <hr>
+                    <div class="list-user">
+                        <table class="table">
+                            <tr>
+                                <td>Nguyen Van Tien</td>
+                                <td><ul class="d-flex">
+                                    <li><a href="" class="active"><i class="fa-solid fa-mars-and-venus"></i></a></li>
+                                    <li><a href=""><i class="fa-solid fa-mars"></i></a></li>
+                                    <li><a href=""><i class="fa-solid fa-venus"></i></a></li>
+                                    <li><a class="remove" href=""><i class="fa-solid fa-xmark"></i></a></li>
+                                </ul></td>
+                            </tr>
+                            <tr>
+                                <td>Nguyen Van Tien</td>
+                                <td><ul class="d-flex">
+                                    <li><a href="" class="active"><i class="fa-solid fa-mars-and-venus"></i></a></li>
+                                    <li><a href=""><i class="fa-solid fa-mars"></i></a></li>
+                                    <li><a href=""><i class="fa-solid fa-venus"></i></a></li>
+                                    <li><a class="remove" href=""><i class="fa-solid fa-xmark"></i></a></li>
+                                </ul></td>
+                            </tr>
+                            <tr>
+                                <td>Nguyen Van Tien</td>
+                                <td><ul class="d-flex">
+                                    <li><a href="" class="active"><i class="fa-solid fa-mars-and-venus"></i></a></li>
+                                    <li><a href=""><i class="fa-solid fa-mars"></i></a></li>
+                                    <li><a href=""><i class="fa-solid fa-venus"></i></a></li>
+                                    <li><a class="remove" href=""><i class="fa-solid fa-xmark"></i></a></li>
+                                </ul></td>
+                            </tr>
+                            <tr>
+                                <td>Nguyen Van Tien</td>
+                                <td><ul class="d-flex">
+                                    <li><a href="" class="active"><i class="fa-solid fa-mars-and-venus"></i></a></li>
+                                    <li><a href=""><i class="fa-solid fa-mars"></i></a></li>
+                                    <li><a href=""><i class="fa-solid fa-venus"></i></a></li>
+                                    <li><a class="remove" href=""><i class="fa-solid fa-xmark"></i></a></li>
+                                </ul></td>
+                            </tr>
+                            <tr>
+                                <td>Nguyen Van Tien</td>
+                                <td><ul class="d-flex">
+                                    <li><a href="" class="active"><i class="fa-solid fa-mars-and-venus"></i></a></li>
+                                    <li><a href=""><i class="fa-solid fa-mars"></i></a></li>
+                                    <li><a href=""><i class="fa-solid fa-venus"></i></a></li>
+                                    <li><a class="remove" href=""><i class="fa-solid fa-xmark"></i></a></li>
+                                </ul></td>
+                            </tr>
+                            <tr>
+                                <td>Nguyen Van Tien</td>
+                                <td><ul class="d-flex">
+                                    <li><a href="" class="active"><i class="fa-solid fa-mars-and-venus"></i></a></li>
+                                    <li><a href=""><i class="fa-solid fa-mars"></i></a></li>
+                                    <li><a href=""><i class="fa-solid fa-venus"></i></a></li>
+                                    <li><a class="remove" href=""><i class="fa-solid fa-xmark"></i></a></li>
+                                </ul></td>
+                            </tr>
+                            <tr>
+                                <td>Nguyen Van Tien</td>
+                                <td><ul class="d-flex">
+                                    <li><a href="" class="active"><i class="fa-solid fa-mars-and-venus"></i></a></li>
+                                    <li><a href=""><i class="fa-solid fa-mars"></i></a></li>
+                                    <li><a href=""><i class="fa-solid fa-venus"></i></a></li>
+                                    <li><a class="remove" href=""><i class="fa-solid fa-xmark"></i></a></li>
+                                </ul></td>
+                            </tr>
+                            <tr>
+                                <td>Nguyen Van Tien</td>
+                                <td><ul class="d-flex">
+                                    <li><a href="" class="active"><i class="fa-solid fa-mars-and-venus"></i></a></li>
+                                    <li><a href=""><i class="fa-solid fa-mars"></i></a></li>
+                                    <li><a href=""><i class="fa-solid fa-venus"></i></a></li>
+                                    <li><a class="remove" href=""><i class="fa-solid fa-xmark"></i></a></li>
+                                </ul></td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
-                <div class="text-insert">
-                    <textarea name="" id="" cols="30" rows="10" style="resize: none;"></textarea>
-                </div>
-            </div>
-            <div class="btn-handle">
-                <button class="btn-cancel">CANCEL</button>
-                <button class="btn-add">ADD LIST</button>
             </div>
         </div>
     </div>
-</div>
-</body>
-</html>
+@endsection
