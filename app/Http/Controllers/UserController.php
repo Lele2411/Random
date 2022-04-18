@@ -4,10 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 
 class UserController extends Controller
 {
+    protected $users;
+
+    public function __construct()
+    {
+        $this->users = Collection::make([]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -37,8 +44,10 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $users = Cache::put('users',$request->all(), 3600);
-        return response()->json($users);
+        $users = Cache::get('users');
+        // //store user
+        Cache::put('users', $users->push(['user_name' => $request->user_name]));
+        return redirect()->route('user.index');
     }
 
     public function storeListUser(Request $request)
@@ -135,9 +144,9 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        $findUser = User::findOrFail($id);
-        $findUser->delete();
-        $users = User::orderBy('id', 'DESC')->get();
-        return view('welcome', compact('users'));
+        $users = Cache::get('users');
+        $users = $users->forget($id);
+        Cache::put('users', $users);
+        return redirect()->route('user.index');
     }
 }
