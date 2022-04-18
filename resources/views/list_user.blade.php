@@ -48,21 +48,24 @@
         </div>
         <div class="middle">
             <h3 class="title">2. CONTROLLER</h3>
-            <form action="" class="form-controller">
-                <div class="form-item item-1">
+            <form action="" class="form-controller" method="POST">
+                @csrf
+                <div id="item-1" class="form-item">
                     <label for="choose-type">Balance gender distribution</label>
                     <span class="choose_input"><i class="fa-solid fa-check"></i></span>
                 </div>
-                <div class="form-item item-2">
-                    <label for="choose-type">Balance gender distribution</label>
+                <div id="item-2" class="form-item">
+                    <label for="choose-type">Random to one group</label>
                     <button type="button" class="choose-type"></button>
-                    <input id="single" type="number" class="choose_input d-none" value="2">
+                    <input id="single" name="number_one_group" type="number" class="choose_input d-none" min="1">
+                    <input type="hidden" id="single_url" value="{{ route('user.sort.one.group') }}">
                 </div>
                 <span>OR (Set either one)</span>
-                <div class="form-item item-3">
-                    <label for="choose-type">Balance gender distribution</label>
+                <div id="item-3" class="form-item">
+                    <label for="choose-type">Random to many group</label>
                     <button type="button" class="choose-type"></button>
-                    <input id="many" type="number" class="choose_input d-none" value="2">
+                    <input id="many" type="number" class="choose_input d-none" min="1">
+                    <input type="hidden" id="many_url" value="{{ route('user.sort.many.group') }}">
                 </div>
                 <button type="submit" class="btn-sdm-controller">START</button>
             </form>
@@ -75,7 +78,7 @@
                 <div class="wrapper-right">
                     <div class="header-main d-flex">
                         <div class="header-left d-flex align-items-center">
-                            <h3 class="title">1. INPUT</h3><span class="total">87</span>
+                            <h3 class="title">1. INPUT</h3><span class="total">{{ empty($users) ? 0 : count($users) }}</span>
                         </div>
                         <div class="header-right">
                             <ul class="d-flex">
@@ -91,82 +94,23 @@
                         <button type="submit"><i class="fa-solid fa-plus"></i></button>
                     </form>
                     <hr>
+                    @if (!empty($users))
                     <div class="list-user">
                         <table class="table">
+                            @foreach ($users as $key => $user)
                             <tr>
-                                <td>Nguyen Van Tien</td>
+                                <td>{{ $user['user_name'] }}</td>
                                 <td><ul class="d-flex">
                                     <li><a href="" class="active"><i class="fa-solid fa-mars-and-venus"></i></a></li>
                                     <li><a href=""><i class="fa-solid fa-mars"></i></a></li>
                                     <li><a href=""><i class="fa-solid fa-venus"></i></a></li>
-                                    <li><a class="remove" href=""><i class="fa-solid fa-xmark"></i></a></li>
+                                    <li><a class="remove" href="{{ route('user.delete', ['id' => $key]) }}"><i class="fa-solid fa-xmark"></i></a></li>
                                 </ul></td>
                             </tr>
-                            <tr>
-                                <td>Nguyen Van Tien</td>
-                                <td><ul class="d-flex">
-                                    <li><a href="" class="active"><i class="fa-solid fa-mars-and-venus"></i></a></li>
-                                    <li><a href=""><i class="fa-solid fa-mars"></i></a></li>
-                                    <li><a href=""><i class="fa-solid fa-venus"></i></a></li>
-                                    <li><a class="remove" href=""><i class="fa-solid fa-xmark"></i></a></li>
-                                </ul></td>
-                            </tr>
-                            <tr>
-                                <td>Nguyen Van Tien</td>
-                                <td><ul class="d-flex">
-                                    <li><a href="" class="active"><i class="fa-solid fa-mars-and-venus"></i></a></li>
-                                    <li><a href=""><i class="fa-solid fa-mars"></i></a></li>
-                                    <li><a href=""><i class="fa-solid fa-venus"></i></a></li>
-                                    <li><a class="remove" href=""><i class="fa-solid fa-xmark"></i></a></li>
-                                </ul></td>
-                            </tr>
-                            <tr>
-                                <td>Nguyen Van Tien</td>
-                                <td><ul class="d-flex">
-                                    <li><a href="" class="active"><i class="fa-solid fa-mars-and-venus"></i></a></li>
-                                    <li><a href=""><i class="fa-solid fa-mars"></i></a></li>
-                                    <li><a href=""><i class="fa-solid fa-venus"></i></a></li>
-                                    <li><a class="remove" href=""><i class="fa-solid fa-xmark"></i></a></li>
-                                </ul></td>
-                            </tr>
-                            <tr>
-                                <td>Nguyen Van Tien</td>
-                                <td><ul class="d-flex">
-                                    <li><a href="" class="active"><i class="fa-solid fa-mars-and-venus"></i></a></li>
-                                    <li><a href=""><i class="fa-solid fa-mars"></i></a></li>
-                                    <li><a href=""><i class="fa-solid fa-venus"></i></a></li>
-                                    <li><a class="remove" href=""><i class="fa-solid fa-xmark"></i></a></li>
-                                </ul></td>
-                            </tr>
-                            <tr>
-                                <td>Nguyen Van Tien</td>
-                                <td><ul class="d-flex">
-                                    <li><a href="" class="active"><i class="fa-solid fa-mars-and-venus"></i></a></li>
-                                    <li><a href=""><i class="fa-solid fa-mars"></i></a></li>
-                                    <li><a href=""><i class="fa-solid fa-venus"></i></a></li>
-                                    <li><a class="remove" href=""><i class="fa-solid fa-xmark"></i></a></li>
-                                </ul></td>
-                            </tr>
-                            <tr>
-                                <td>Nguyen Van Tien</td>
-                                <td><ul class="d-flex">
-                                    <li><a href="" class="active"><i class="fa-solid fa-mars-and-venus"></i></a></li>
-                                    <li><a href=""><i class="fa-solid fa-mars"></i></a></li>
-                                    <li><a href=""><i class="fa-solid fa-venus"></i></a></li>
-                                    <li><a class="remove" href=""><i class="fa-solid fa-xmark"></i></a></li>
-                                </ul></td>
-                            </tr>
-                            <tr>
-                                <td>Nguyen Van Tien</td>
-                                <td><ul class="d-flex">
-                                    <li><a href="" class="active"><i class="fa-solid fa-mars-and-venus"></i></a></li>
-                                    <li><a href=""><i class="fa-solid fa-mars"></i></a></li>
-                                    <li><a href=""><i class="fa-solid fa-venus"></i></a></li>
-                                    <li><a class="remove" href=""><i class="fa-solid fa-xmark"></i></a></li>
-                                </ul></td>
-                            </tr>
+                            @endforeach
                         </table>
-                    </div>
+                    </div> 
+                    @endif
                 </div>
             </div>
         </div>

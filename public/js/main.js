@@ -5,4 +5,20 @@ $(document).ready(function() {
         element.style.backgroundColor = color;
         element.style.border = "1px solid " + color;
     });
+
+    $('.form-item .choose-type').on('click', function() {
+        parent = $(this).parent().attr("id");
+        if (parent == "item-2") {
+            $("#single").removeClass('d-none');
+            $("#many").addClass('d-none');
+            let url = $('#single_url').val();
+            $('.form-controller').attr('action', url);
+        }
+        if (parent == "item-3") {
+            $("#many").removeClass('d-none');
+            $("#single").addClass('d-none');
+            let url = $('#many_url').val();
+            $('.form-controller').attr('action', url);
+        }
+    })
 });
