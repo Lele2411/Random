@@ -16,3 +16,7 @@ use App\Http\Controllers\UserController;
 
 Route::get('/', [UserController::class, 'index'])->name('user.index');
 Route::post('/create', [UserController::class, 'store'])->name('user.store');
+Route::post('/createListUser',[UserController::class,'storeListUser'])->name('user.storeListUser');
+Route::post('/sortToOneGroup',[UserController::class, 'sortToOneGroup'])->name('user.sort.one.group');
+Route::post('/sortToManyGroup',[UserController::class, 'sortToManyGroup'])->name('user.sort.many.group');
+Route::post('/deleteUser/{id}',[UserController::class,'destroy'])->name('user.delete');

@@ -85,9 +85,10 @@
                             </ul>
                         </div>
                     </div>
-                    <form class="form-add" action="">
-                        <input type="text">
-                        <button>+</button>
+                    <form class="form-add" action="{{ route('user.store') }}" method="POST">
+                        @csrf
+                        <input type="text" name="user_name">
+                        <button type="submit"><i class="fa-solid fa-plus"></i></button>
                     </form>
                     <hr>
                     <div class="list-user">
