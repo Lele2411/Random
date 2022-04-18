@@ -40,7 +40,7 @@ li {
 }
 .right, .left {
     width: 37%;
-    height: 750px;
+    height: 700px;
     margin: 0px auto;
 }
 .left , .main {
@@ -54,8 +54,8 @@ li {
     border-radius: 10px;
 }
 .title {
-    margin: 2rem;
-    font-size: 2.5rem;
+    margin: 1rem;
+    font-size: 2rem;
 }
 .left .list-group {
     display: flex;
@@ -63,7 +63,7 @@ li {
     flex-direction: row;
     justify-content: space-evenly;
     align-items: flex-start;
-    min-height: 90%;
+    min-height: 680px;
 }
 .left .list-group .group {
     background-color: green;
@@ -74,8 +74,8 @@ li {
 .left .list-group .group span {
     display: block;
     color: white;
-    margin: 1.8rem;
-    font-size: 1.8rem;
+    margin: 1.2rem;
+    font-size: 1.2rem;
     font-weight: bolder;
 }
 .left .list-group .group .item-group {
@@ -109,11 +109,11 @@ li {
     align-items: center;
 }
 .middle form .form-item label {
-    font-size: 2rem;
+    font-size: 1.2rem;
     font-weight: 400;
 }
 .middle form span {
-    font-size: 1.6rem;
+    font-size: 1.2rem;
     padding: 0.4rem 1rem;
 }
 .middle form .form-item .choose-type {
@@ -128,7 +128,7 @@ li {
 .middle form .form-item > .choose_input {
     height: 40px;
     width: 60px;
-    font-size: 1.8rem;
+    font-size: 1.2rem;
     font-weight: bolder;
     padding: 5px;
     border: 2px solid black;
@@ -138,11 +138,12 @@ li {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
+    width: 30px;
+    height: 30px;
 }
 .middle form .form-item span.choose_input > i {
     display: block;
-    font-size: 2.5rem;
+    font-size: 1.2rem;
     font-weight: bolder;
     background-color: none;
     color: green;
@@ -174,7 +175,7 @@ li {
 }
 .main {
     margin-top: 2rem;
-    height: 80%;
+    height: 600px;
 }
 .wrapper-right {
     width: 95%;
@@ -194,7 +195,7 @@ li {
 .header-right ul li a {
     padding: 8px 10px;
     border: 1px solid orange;
-    font-size: 2rem;
+    font-size: 1.5rem;
     border-radius: 50%;
 }
 .header-right .more {
@@ -207,6 +208,9 @@ li {
     padding: 5px;
     border-radius: 5px;
 }
+.form-add {
+    display: flex;
+}
 .form-add > input , button {
     background-color: grey;
     height: 50px;
@@ -215,6 +219,7 @@ li {
     padding: 5px 10px;
     font-size: 1.5rem;
     color: black;
+    border-radius: 5px;
 }
 .form-add > input {
     margin-left: 1.5rem;
@@ -223,6 +228,9 @@ li {
 }
 .form-add > button {
     width: 100px;
+}
+.form-add > button > i {
+    font-size: 2rem;
 }
 .right hr {
     font-size: 1.5rem;
@@ -246,12 +254,16 @@ li {
     align-items: center;
     text-align: center;
     justify-content: space-between;
+    vertical-align: middle;
+    margin-bottom: 1rem;
 }
 .table tr td {
     border: none !important;
 }
 .table tr td:nth-child(1) {
-    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
     font-weight: bolder;
     width: 70%;
     height: 50px;
@@ -259,7 +271,7 @@ li {
     background-color: rgb(231, 229, 229);
 }
 .table tr td:nth-child(2) ul {
-    height: 50px;
+    height: 40px;
     align-items: center;
 }
 .table tr td:nth-child(2) ul li {
@@ -274,7 +286,8 @@ li {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 3.5rem;
+    text-decoration: none;
+    font-size: 2.5rem;
     width: 55px;
     height: 55px;
     padding: 2px;
